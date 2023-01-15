@@ -3,3 +3,5 @@ export const getCurrentGuess = guesses => {
 
 	return index;
 };
+export const getCharacterCount = (guess, character) =>
+	guess.split(character).length - 1;
