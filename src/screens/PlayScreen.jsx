@@ -3,9 +3,12 @@ import WordsGrid from "../components/WordsGrid";
 import { getCurrentGuess } from "../utils/utils";
 import words from "../assets/words.json";
 import { useSnackbar } from "react-simple-snackbar";
+import { useSearchParams } from "react-router-dom";
 
 function PlayScreen() {
-	const [guesses, setGuesses] = useState(new Array(6).fill(null));
+	const [searchParams] = useSearchParams();
+	const size = Number(searchParams.get("size"));
+	const [guesses, setGuesses] = useState(new Array(size + 1).fill(null));
 	const [currentGuess, setCurrentGuess] = useState("");
 	const [openSnackbar] = useSnackbar({
 		style: {
@@ -15,7 +18,7 @@ function PlayScreen() {
 	});
 
 	const wordList = useMemo(() => {
-		return words["5"];
+		return words[size];
 	}, []);
 	const selectedWord = useMemo(
 		() => wordList[Math.floor(Math.random() * wordList.length)],
@@ -24,7 +27,7 @@ function PlayScreen() {
 	console.log(selectedWord);
 
 	const handleGuessSubmit = () => {
-		if (currentGuess.length >= 5) {
+		if (currentGuess.length >= size) {
 			if (!wordList.includes(currentGuess)) {
 				openSnackbar("Not in wordlist");
 				return;
@@ -54,7 +57,7 @@ function PlayScreen() {
 		}
 		const upperCaseKey = e.key.toUpperCase();
 
-		if (currentGuess.length >= 5 || !upperCaseKey.match(/^[A-Z]$/)) {
+		if (currentGuess.length >= size || !upperCaseKey.match(/^[A-Z]$/)) {
 			return;
 		}
 		setCurrentGuess(prevState => prevState + e.key.toUpperCase());
@@ -68,7 +71,7 @@ function PlayScreen() {
 	}, [guesses, currentGuess]);
 
 	return (
-		<div className="min-h-screen flex flex-col justify-center">
+		<div className="min-h-screen flex flex-col justify-center overflow-x-auto">
 			<WordsGrid
 				guesses={guesses}
 				currentGuess={currentGuess}

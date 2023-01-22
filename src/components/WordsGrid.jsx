@@ -4,7 +4,7 @@ import GuessRow from "./GuessRow";
 
 const WordsGrid = ({ guesses, currentGuess, selectedWord }) => {
 	return (
-		<div className="flex flex-col justify-center items-center gap-1">
+		<div className="flex flex-col justify-center lg:items-center  overflow-x-auto gap-1 p-16">
 			{guesses.map((guess, i) => (
 				<GuessRow
 					selectedWord={selectedWord}
