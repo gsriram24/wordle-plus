@@ -3,6 +3,7 @@ import {
 	Navigate,
 	RouterProvider,
 } from "react-router-dom";
+import Header from "./components/Header";
 import PlayScreen from "./screens/PlayScreen";
 
 function App() {
@@ -17,7 +18,12 @@ function App() {
 		},
 	]);
 
-	return <RouterProvider router={router} />;
+	return (
+		<>
+			<Header />
+			<RouterProvider router={router} />
+		</>
+	);
 }
 
 export default App;

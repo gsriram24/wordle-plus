@@ -4,6 +4,7 @@ import { getCurrentGuess } from "../utils/utils";
 import words from "../assets/words.json";
 import { useSnackbar } from "react-simple-snackbar";
 import { useSearchParams } from "react-router-dom";
+import QwertyKeyboard from "../components/QwertyKeyboard";
 
 function PlayScreen() {
 	const [searchParams] = useSearchParams();
@@ -71,13 +72,16 @@ function PlayScreen() {
 	}, [guesses, currentGuess]);
 
 	return (
-		<div className="min-h-screen flex flex-col justify-center overflow-x-auto">
-			<WordsGrid
-				guesses={guesses}
-				currentGuess={currentGuess}
-				selectedWord={selectedWord}
-			/>
-		</div>
+		<>
+			<div className="min-h-screen flex flex-col justify-center overflow-x-auto">
+				<WordsGrid
+					guesses={guesses}
+					currentGuess={currentGuess}
+					selectedWord={selectedWord}
+				/>
+			</div>
+			<QwertyKeyboard handleKeyPress={handleKeyPress} />
+		</>
 	);
 }
 

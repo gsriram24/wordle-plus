@@ -23,15 +23,13 @@ function GuessRow({ guess, selectedWord, isCurrentGuess }) {
 
 	const getSize = () => {
 		if (size > 12) {
-			return "10";
+			return "w-10 h-10";
 		}
 		if (size > 8) {
-			return "12";
+			return "w-12 h-12";
 		}
-		return "16";
+		return "w-16 h-16";
 	};
-
-	const wordSize = getSize();
 
 	const getGuessBody = () => {
 		const row = [];
@@ -40,7 +38,7 @@ function GuessRow({ guess, selectedWord, isCurrentGuess }) {
 			row.push(
 				<div
 					key={i}
-					className={`w-${wordSize} h-${wordSize} flex items-center justify-center rounded-sm border-gray-400 border-2 transition-colors ease-in-out delay-150 duration-1000  font-semibold text-3xl ${getGuessLetterColor(
+					className={`${getSize()} flex items-center justify-center rounded-sm border-gray-400 border-2 transition-colors ease-in-out delay-150 duration-1000  font-semibold text-3xl ${getGuessLetterColor(
 						letter,
 						i
 					)}`}
