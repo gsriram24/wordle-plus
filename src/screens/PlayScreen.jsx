@@ -25,7 +25,6 @@ function PlayScreen() {
 		() => wordList[Math.floor(Math.random() * wordList.length)],
 		[]
 	);
-	console.log(selectedWord);
 
 	const handleGuessSubmit = () => {
 		if (currentGuess.length >= size) {

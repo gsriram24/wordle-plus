@@ -26,7 +26,6 @@ const getKey = letter => {
 };
 
 const QwertyKeyboard = ({ handleKeyPress }) => {
-	console.log(letterList);
 	return (
 		<div className="flex flex-col justify-center align-middle sticky bottom-0 bg-white gap-2 my-8">
 			{letterList.map((row, index) => (
