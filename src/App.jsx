@@ -3,24 +3,33 @@ import {
 	Navigate,
 	RouterProvider,
 } from "react-router-dom";
-import Header from "./components/Header";
 import PlayScreen from "./screens/PlayScreen";
+import HomeScreen from "./screens/HomeScreen";
+import Layout from "./screens/Layout";
 
 function App() {
 	const router = createBrowserRouter([
 		{
-			path: "play",
-			element: <PlayScreen />,
-		},
-		{
-			path: "*",
-			element: <Navigate replace to="/play?size=5" />,
+			element: <Layout />,
+			children: [
+				{
+					path: "/",
+					element: <HomeScreen />,
+				},
+				{
+					path: "/play",
+					element: <PlayScreen />,
+				},
+				{
+					path: "*",
+					element: <Navigate replace to="/" />,
+				},
+			],
 		},
 	]);
 
 	return (
 		<>
-			<Header />
 			<RouterProvider router={router} />
 		</>
 	);

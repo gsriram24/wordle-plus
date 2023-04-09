@@ -73,7 +73,7 @@ function PlayScreen() {
 
 	return (
 		<>
-			<div className="min-h-screen flex flex-col justify-center overflow-x-auto">
+			<div className="flex flex-col justify-center overflow-x-auto  flex-grow">
 				<WordsGrid
 					guesses={guesses}
 					currentGuess={currentGuess}
