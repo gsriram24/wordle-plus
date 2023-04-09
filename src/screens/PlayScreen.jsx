@@ -28,6 +28,10 @@ function PlayScreen() {
 
 	const handleGuessSubmit = () => {
 		if (currentGuess.length >= size) {
+			if (guesses.includes(currentGuess)) {
+				openSnackbar("Please try a different word");
+				return;
+			}
 			if (!wordList.includes(currentGuess)) {
 				openSnackbar("Not in wordlist");
 				return;
@@ -42,6 +46,10 @@ function PlayScreen() {
 				return newGuesses;
 			});
 			setCurrentGuess("");
+		}
+		if (getCurrentGuess(guesses) >= size && currentGuess.length >= size) {
+			openSnackbar(`Out of guesses! The word was: ${selectedWord}`);
+			return;
 		}
 	};
 
