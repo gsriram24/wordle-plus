@@ -3,8 +3,8 @@ import React from "react";
 const letterList = ["qwertyuiop", "asdfghjkl", "zxcvbnm"].map(row =>
 	row.toUpperCase().split("")
 );
-letterList[2][0] = "Backspace";
-letterList[2][letterList[2].length - 1] = "Enter";
+letterList[2].unshift("Backspace");
+letterList[2].push("Enter");
 
 const getKey = letter => {
 	if (letter === "Backspace")
@@ -41,7 +41,7 @@ const QwertyKeyboard = ({ handleKeyPress }) => {
 								letter === "Enter" || letter === "Backspace"
 									? "flex-auto"
 									: "flex-1"
-							}  rounded-sm justify-center items-center	 h-12`}
+							}  rounded-sm justify-center items-center h-12`}
 						>
 							{getKey(letter)}
 						</button>
