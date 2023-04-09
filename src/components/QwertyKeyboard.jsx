@@ -27,17 +27,21 @@ const getKey = letter => {
 
 const QwertyKeyboard = ({ handleKeyPress }) => {
 	return (
-		<div className="flex flex-col w-full justify-center sticky bottom-0 bg-white gap-2 m-8 max-w-xl mx-auto px-8">
+		<div className="flex flex-col w-full justify-center sticky bottom-0 bg-white gap-2 m-8 max-w-xl mx-auto px-4">
 			{letterList.map((row, index) => (
 				<div
 					key={index}
-					className="justify-center flex gap-2 touch-manipulation "
+					className="justify-center flex gap-2 touch-manipulation"
 				>
 					{row.map(letter => (
 						<button
 							key={letter}
 							onClick={() => handleKeyPress({ key: letter })}
-							className="text-xl font-semibold bg-gray-300 flex flex-1 rounded-sm justify-center items-center h-12 px-2"
+							className={`text-xl font-semibold bg-gray-300 flex ${
+								letter === "Enter" || letter === "Backspace"
+									? "flex-auto"
+									: "flex-1"
+							}  rounded-sm justify-center items-center	 h-12`}
 						>
 							{getKey(letter)}
 						</button>
